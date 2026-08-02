@@ -33,7 +33,7 @@
          color:var(--sub);margin:0}
 
   /* ---- masthead ---- */
-  .masthead{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+  .masthead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.5rem 1rem;
             padding:1.75rem 0;border-bottom:1px solid var(--rule)}
   .wordmark{font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:.02em;margin:0}
   .wordmark span{color:var(--oxide)}
@@ -52,8 +52,8 @@
                 width:100%;transform:scaleX(0);transform-origin:left;
                 animation:draw 1100ms cubic-bezier(.22,.61,.36,1) 180ms forwards}
   @keyframes draw{to{transform:scaleX(1)}}
-  .stages{display:grid;grid-template-columns:repeat(4,1fr);margin-top:-1px}
-  .stage{padding-top:1rem;border-left:1px solid var(--rule);padding-left:.9rem;
+  .stages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:-1px}
+  .stage{min-width:0;padding-top:1rem;border-left:1px solid var(--rule);padding-left:.9rem;
          opacity:0;animation:rise 620ms ease forwards}
   .stage:nth-child(1){animation-delay:.62s} .stage:nth-child(2){animation-delay:.78s}
   .stage:nth-child(3){animation-delay:.94s} .stage:nth-child(4){animation-delay:1.1s}
@@ -63,7 +63,8 @@
 
   /* ---- sections ---- */
   section{padding:4.5rem 0;border-top:1px solid var(--rule)}
-  .cols{display:grid;grid-template-columns:14rem 1fr;gap:2.5rem;align-items:start}
+  .cols{display:grid;grid-template-columns:14rem minmax(0,1fr);gap:2.5rem;align-items:start}
+  .cols>*{min-width:0}
   h2{font-family:var(--display);font-weight:600;font-size:1.6rem;letter-spacing:-.015em;margin:0 0 1rem}
   p{margin:0 0 1rem;max-width:62ch}
   p:last-child{margin-bottom:0}
@@ -84,10 +85,12 @@
   .product p{color:#B9C2CE;max-width:58ch}
 
   /* ---- spec sheet ---- */
-  .spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0;
-        border-top:1px solid var(--rule)}
-  .spec div{padding:1.15rem 1.15rem 1.15rem 0;border-bottom:1px solid var(--rule)}
-  .spec dd{margin:.4rem 0 0;font-family:var(--mono);font-size:.9rem;line-height:1.5}
+  .spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+        column-gap:2rem;row-gap:0;border-top:1px solid var(--rule)}
+  .spec div{min-width:0;padding:1.15rem 0;border-bottom:1px solid var(--rule)}
+  .spec dd{margin:.4rem 0 0;font-family:var(--mono);font-size:.85rem;line-height:1.5;
+           overflow-wrap:anywhere;word-break:break-word}
+  .spec dd a{text-decoration-thickness:1px;text-underline-offset:2px}
 
   footer{padding:2.5rem 0 4rem;color:var(--sub);font-size:.85rem}
   footer p{max-width:70ch}
@@ -182,7 +185,7 @@
           <div><p class="field">Jurisdiction</p><dd>New Mexico, USA</dd></div>
           <div><p class="field">Formed</p><dd>23 April 2026</dd></div>
           <div><p class="field">Registered office</p><dd>1209 Mountain Rd Pl NE, Ste R<br>Albuquerque, NM 87110</dd></div>
-          <div><p class="field">Contact</p><dd><a href="mailto:codeforgellclabs@gmail.com">codeforgellclabs@gmail.com</a></dd></div>
+          <div><p class="field">Contact</p><dd><a href="mailto:contact@codeforgeworks.com">contact@codeforgeworks.com</a></dd></div>
           <div><p class="field">Practice</p><dd>Software development</dd></div>
           <div><p class="field">Markets</p><dd>United States · Argentina<br>English · Spanish</dd></div>
         </dl>
