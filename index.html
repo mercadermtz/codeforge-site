@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CodeForge LLC — Software engineering studio</title>
+<meta name="description" content="CodeForge LLC is a software engineering studio. We build custom systems, AI and voice agents, and integrations for companies whose problems don't fit off-the-shelf software.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --iron:#14171C; --steel:#3D444F; --mist:#E8EBEF; --paper:#FAFBFC;
+    --oxide:#0E7C7B; --brass:#E0A32E;
+    --ink:var(--iron); --bg:var(--paper); --sub:var(--steel); --rule:var(--mist);
+    --display:"Archivo",system-ui,sans-serif;
+    --body:"IBM Plex Sans",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --ink:#EDF0F4; --bg:#0E1116; --sub:#96A0AE; --rule:#232833; --oxide:#3AA6A2; }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);
+       font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .shell{max-width:1080px;margin:0 auto;padding:0 1.75rem}
+  a{color:inherit}
+  a:focus-visible,summary:focus-visible{outline:2px solid var(--oxide);outline-offset:3px}
+
+  /* utility label — the spec-sheet voice */
+  .field{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+         color:var(--sub);margin:0}
+
+  /* ---- masthead ---- */
+  .masthead{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+            padding:1.75rem 0;border-bottom:1px solid var(--rule)}
+  .wordmark{font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:.02em;margin:0}
+  .wordmark span{color:var(--oxide)}
+
+  /* ---- hero ---- */
+  .hero{padding:5.5rem 0 3rem}
+  .hero h1{font-family:var(--display);font-weight:600;margin:0;
+           font-size:clamp(2.3rem,6.4vw,4.6rem);line-height:1.02;letter-spacing:-.032em;
+           max-width:16ch}
+  .hero p.stand{max-width:46ch;margin:1.75rem 0 0;font-size:1.075rem;color:var(--sub)}
+
+  /* ---- signature: the build line ---- */
+  .line{margin:4rem 0 0;padding-bottom:3.5rem}
+  .track{position:relative;height:1px;background:var(--rule)}
+  .track::after{content:"";position:absolute;inset:0 auto 0 0;height:1px;background:var(--oxide);
+                width:100%;transform:scaleX(0);transform-origin:left;
+                animation:draw 1100ms cubic-bezier(.22,.61,.36,1) 180ms forwards}
+  @keyframes draw{to{transform:scaleX(1)}}
+  .stages{display:grid;grid-template-columns:repeat(4,1fr);margin-top:-1px}
+  .stage{padding-top:1rem;border-left:1px solid var(--rule);padding-left:.9rem;
+         opacity:0;animation:rise 620ms ease forwards}
+  .stage:nth-child(1){animation-delay:.62s} .stage:nth-child(2){animation-delay:.78s}
+  .stage:nth-child(3){animation-delay:.94s} .stage:nth-child(4){animation-delay:1.1s}
+  @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .stage b{display:block;font-family:var(--display);font-weight:600;font-size:.95rem;margin-bottom:.15rem}
+  .stage span{font-size:.85rem;color:var(--sub)}
+
+  /* ---- sections ---- */
+  section{padding:4.5rem 0;border-top:1px solid var(--rule)}
+  .cols{display:grid;grid-template-columns:14rem 1fr;gap:2.5rem;align-items:start}
+  h2{font-family:var(--display);font-weight:600;font-size:1.6rem;letter-spacing:-.015em;margin:0 0 1rem}
+  p{margin:0 0 1rem;max-width:62ch}
+  p:last-child{margin-bottom:0}
+
+  .make{display:grid;gap:0}
+  .make article{padding:1.5rem 0;border-bottom:1px solid var(--rule)}
+  .make article:first-child{padding-top:0}
+  .make article:last-child{border-bottom:0;padding-bottom:0}
+  .make h3{font-family:var(--display);font-weight:600;font-size:1.1rem;margin:.35rem 0 .4rem}
+  .make p{color:var(--sub);margin:0}
+
+  /* ---- product callout ---- */
+  .product{background:var(--iron);color:#EDF0F4;border-radius:2px;padding:2.25rem}
+  .product .field{color:#8E99A8}
+  .product h3{font-family:var(--display);font-weight:600;font-size:1.75rem;margin:.5rem 0 .75rem;
+              letter-spacing:-.02em}
+  .product h3 em{font-style:normal;color:var(--brass)}
+  .product p{color:#B9C2CE;max-width:58ch}
+
+  /* ---- spec sheet ---- */
+  .spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0;
+        border-top:1px solid var(--rule)}
+  .spec div{padding:1.15rem 1.15rem 1.15rem 0;border-bottom:1px solid var(--rule)}
+  .spec dd{margin:.4rem 0 0;font-family:var(--mono);font-size:.9rem;line-height:1.5}
+
+  footer{padding:2.5rem 0 4rem;color:var(--sub);font-size:.85rem}
+  footer p{max-width:70ch}
+
+  @media (max-width:760px){
+    .cols{grid-template-columns:1fr;gap:1rem}
+    .stages{grid-template-columns:repeat(2,1fr);gap:.5rem 0}
+    .hero{padding:3.5rem 0 2rem}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .track::after{transform:scaleX(1)} .stage{opacity:1}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="masthead">
+    <p class="wordmark">CODEFORGE<span>.</span></p>
+    <p class="field">Albuquerque, NM &nbsp;·&nbsp; Est. 2026</p>
+  </div>
+
+  <div class="hero">
+    <h1>We build the software companies can't buy off the shelf.</h1>
+    <p class="stand">CodeForge is a small engineering studio. We take problems that are too
+      specific for a product and too involved for a plugin, and we ship working systems that
+      run in production.</p>
+
+    <div class="line" aria-label="How an engagement runs">
+      <div class="track"></div>
+      <div class="stages">
+        <div class="stage"><b>Brief</b><span>We learn the operation before we design for it.</span></div>
+        <div class="stage"><b>Build</b><span>Small releases, tested, reviewed against the brief.</span></div>
+        <div class="stage"><b>Ship</b><span>Into production, with the runbook that keeps it alive.</span></div>
+        <div class="stage"><b>Operate</b><span>We stay on to run and extend what we built.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="cols">
+      <p class="field">What we make</p>
+      <div class="make">
+        <article>
+          <h3>Custom back-office systems</h3>
+          <p>Scheduling, dispatch, billing and reporting for businesses whose process does not
+             match anything on the market. Built on the tools they already pay for, not beside them.</p>
+        </article>
+        <article>
+          <h3>AI and voice agents</h3>
+          <p>Assistants that hold a real conversation and complete the task — book the appointment,
+             take the order, escalate to a person — wired into live calendars, payments and CRMs.</p>
+        </article>
+        <article>
+          <h3>Integrations</h3>
+          <p>The connective work between telephony, messaging, calendars and payment providers,
+             including the failure paths most integrations skip.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cols">
+      <p class="field">In production</p>
+      <div class="product">
+        <p class="field">Our own product</p>
+        <h3>Sonora<em>.</em></h3>
+        <p>An AI voice agent that answers the phone for small service businesses — clinics,
+           trades, legal and property management — during the hours nobody can pick up. It books
+           against the business's real calendar, takes messages, answers the questions the owner
+           configured, and hands the call to a person when the caller asks for one.</p>
+        <p>Calls are inbound: members of the public dialling a business that engaged us to answer
+           its phone. Each business controls its own number, greeting and configuration, and any
+           transfer goes to a line that business nominated. We do not place unsolicited marketing
+           calls.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cols">
+      <p class="field">Company</p>
+      <div>
+        <h2>The details, in full</h2>
+        <dl class="spec">
+          <div><p class="field">Legal name</p><dd>CODEFORGE LLC</dd></div>
+          <div><p class="field">Entity</p><dd>Limited liability company</dd></div>
+          <div><p class="field">Jurisdiction</p><dd>New Mexico, USA</dd></div>
+          <div><p class="field">Formed</p><dd>23 April 2026</dd></div>
+          <div><p class="field">Registered office</p><dd>1209 Mountain Rd Pl NE, Ste R<br>Albuquerque, NM 87110</dd></div>
+          <div><p class="field">Contact</p><dd><a href="mailto:codeforgellclabs@gmail.com">codeforgellclabs@gmail.com</a></dd></div>
+          <div><p class="field">Practice</p><dd>Software development</dd></div>
+          <div><p class="field">Markets</p><dd>United States · Argentina<br>English · Spanish</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 CodeForge LLC. Call recordings and caller details are processed only to deliver
+       the service to the business that received the call, and are retained according to that
+       business's configured retention period.</p>
+  </footer>
+
+</div>
+</body>
+</html>
